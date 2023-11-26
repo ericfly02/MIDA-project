@@ -1,0 +1,36 @@
+Per el meu dataset, he aplicat el model Performance Majority Voting utilitzant el següent codi:
+"
+from sklearn.ensemble import BaggingClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import cross_val_score
+
+base_estimator = DecisionTreeClassifier(max_depth=10, min_samples_split=5, random_state=42)
+
+bagging_model = BaggingClassifier(base_estimator=base_estimator, n_estimators=100, random_state=42)
+
+cv_scores = cross_val_score(bagging_model, X, y, cv=skf, scoring='accuracy')
+recall_scores = cross_val_score(bagging_model, X, y, cv=skf, scoring='recall')
+f1_scores = cross_val_score(bagging_model, X, y, cv=skf, scoring='f1')
+
+print(f"Accuracy mitjana: {np.mean(cv_scores)}")
+print(f"Recall mitjana: {np.mean(recall_scores)}")
+print(f"F1 mitjana: {np.mean(f1_scores)}")
+"
+
+I he obtingut els següents resultats:
+
+"
+Accuracy mitjana: 0.9544181977252844
+Recall mitjana: 0.9534536391804342
+F1 mitjana: 0.9543724560275659
+"
+
+Donat el codi i els resultats obtinguts, vull que responguis a la seguent pregunta:
+
+"For each method you should describe how you adjusted parameters for the
+algorithm and how did you perform an evaluation of the method. You have to
+report also the performance of the model on the validation dataset. In addition,
+for each method you should describe and discus some particular issues:
+
+Bagging: Discussion of choice of parameters used. Explain parameters selected for each algorithm.
+"
